@@ -1,5 +1,5 @@
 """
-Traffic Violation Detection — Gradio Dashboard
+Traffic Violation Detection — Gradio/ Dashboard
 ==============================================
 
 Run several traffic-violation models on an **image or a video**, either all
