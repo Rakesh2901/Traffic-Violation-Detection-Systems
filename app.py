@@ -38,7 +38,7 @@ matplotlib.use("Agg")  # headless backend for Spaces
 import matplotlib.pyplot as plt
 
 # --------------------------------------------------------------------------- #
-# Configuration
+#                          Configuration
 # --------------------------------------------------------------------------- #
 BASE_DIR = Path(__file__).resolve().parent
 MODELS_DIR = BASE_DIR / "models"
@@ -164,7 +164,7 @@ MODELS: list[dict] = [
 
 
 # --------------------------------------------------------------------------- #
-# Loading
+#                                  Loading
 # --------------------------------------------------------------------------- #
 def _is_real_weights(path: Path) -> bool:
     if not path.exists() or not path.is_file() or path.stat().st_size < 1024:
@@ -236,7 +236,7 @@ CSV_HEADERS = ["source", "model", "class", "confidence", "x1", "y1", "x2", "y2"]
 
 
 # --------------------------------------------------------------------------- #
-# Drawing + inference
+#                           Drawing + inference
 # --------------------------------------------------------------------------- #
 def _draw(image, x1, y1, x2, y2, label, color_rgb):
     cv2.rectangle(image, (x1, y1), (x2, y2), color_rgb, 2)
@@ -553,7 +553,7 @@ def make_handler(model_ids):
 
 
 # --------------------------------------------------------------------------- #
-# UI
+#                           UI Using gradio
 # --------------------------------------------------------------------------- #
 THEME = gr.themes.Soft(
     primary_hue="cyan", secondary_hue="indigo", neutral_hue="slate",
