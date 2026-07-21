@@ -1,13 +1,4 @@
----
-title: Traffic Violation Detection System
-sdk: gradio
-sdk_version: 5.27.0
-app_file: app.py
-python_version: "3.11"
-pinned: false
----
-
-# 🚦 Traffic Violation Detection Dashboard
+#               🚦 Traffic Violation Detection Dashboard
 
 A Gradio dashboard that runs several traffic-violation models on **images and
 video**, either all together or one at a time. Every run produces an annotated
@@ -116,4 +107,4 @@ The Space rebuilds from the `README.md` front-matter (`sdk: gradio`,
   classifier; `numpy` is pinned `<2.0` for TensorFlow compatibility.
 - Confirm weights are LFS-tracked before pushing — `git lfs ls-files` should
   list every `.pt` / `.onnx` / `.h5`.
-- Free CPU Spaces are fine; pick a GPU Space for faster video processing.
+- Free CPU Spaces are fine; pick a GPU Space for faster video processing; All the model are here trained on Nvidia RTX 4050.
