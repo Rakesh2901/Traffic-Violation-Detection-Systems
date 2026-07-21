@@ -1,0 +1,20 @@
+# Deep Learning
+
+# TensorFlow 2.15 ships Keras 2.x, which loads the legacy .h5 vehicle
+# classifier (saved with keras 2.3) and runs on Python 3.11.
+tensorflow==2.19.0
+torch>=2.2.0
+torchvision>=0.17.0
+
+# ONNX GPU
+onnxruntime-gpu>=1.20.0
+
+# Numerical
+
+# Pin NumPy to the 1.x series for maximum compatibility with the current
+# machine learning stack (TensorFlow, OpenCV, and other compiled extensions).
+numpy>=1.26,<2.0
+
+# Image
+opencv-python-headless>=4.9.0
+pillow>=10.0.0
