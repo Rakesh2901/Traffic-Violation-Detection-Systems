@@ -73,75 +73,108 @@ of `app.py` (set `"type": "detect"` for YOLO or `"type": "classify"` for a
 Keras CNN), and — for detectors — optionally add a `configs/<id>.yaml` with the
 class `names`. The model then appears in both tabs automatically.
 
-## Run locally
+## 🚀 Run Locally
 
-```bash
-# Setup
+### Prerequisites
 
-## 1. Install Git LFS (one-time setup)
+Before cloning the repository, install **Git LFS (Large File Storage)**. The project stores its AI model weights using Git LFS, so installing it ensures the actual model files are downloaded instead of lightweight pointer files.
 
 ```bash
 git lfs install
 ```
 
-## 2. Clone the repository
+### 1. Clone the Repository
 
 ```bash
 git clone https://github.com/Rakesh2901/Traffic-Violation-Detection-Systems.git
 cd Traffic-Violation-Detection-Systems
 ```
 
-## 3. Download the model weights
+### 2. Download Model Weights
+
+Retrieve the Git LFS-managed model files:
 
 ```bash
 git lfs pull
 ```
 
-> This downloads the actual `.pt` model files instead of the small Git LFS pointer files.
+> **Note:** If Git LFS is not installed or `git lfs pull` is skipped, the model files (`.pt`) will remain as pointer files and the application will not be able to load them.
 
-## 4. Create a virtual environment
+### 3. Create and Activate a Virtual Environment
 
-### Windows
+#### Windows
 
 ```powershell
 python -m venv .venv
 .venv\Scripts\activate
 ```
 
-### Linux/macOS
+#### Linux / macOS
 
 ```bash
 python3 -m venv .venv
 source .venv/bin/activate
 ```
 
-## 5. Install dependencies
+### 4. Install Dependencies
 
 ```bash
 pip install -r requirements.txt
 ```
 
-## 6. Run the application
+### 5. Launch the Application
 
 ```bash
 python app.py
 ```
+
+The application will start on:
+
+```
+http://localhost:7860
 ```
 
-Open the printed URL (default http://localhost:7860).
+---
 
-> If a model shows `(not loaded)`, its weights file is missing or is an
-> un-pulled Git LFS pointer — run `git lfs pull` and restart.
+## Troubleshooting
 
+If any model is displayed as **"(not loaded)"**, verify that the model weights have been downloaded correctly:
 
-The Space rebuilds from the `README.md` front-matter (`sdk: gradio`,
-`app_file: app.py`, `python_version: "3.11"`) and `requirements.txt`.
+```bash
+git lfs pull
+```
 
-### Notes for Spaces
-- `python_version: "3.14"` is pinned because the stdlib `audioop` module
-  (used transitively by Gradio) was removed in 3.13.
-- `tensorflow-cpu==2.15.0` ships Keras 2.x, which loads the legacy `.h5`
-  classifier; `numpy` is pinned `<2.0` for TensorFlow compatibility.
-- Confirm weights are LFS-tracked before pushing — `git lfs ls-files` should
-  list every `.pt` / `.onnx` / `.h5`.
-- Free CPU Spaces are fine; pick a GPU Space for faster video processing; All the model are here trained on Nvidia RTX 4050.
+After downloading the weights, restart the application.
+
+---
+
+## Hugging Face Spaces
+
+This project is configured to deploy directly on Hugging Face Spaces using the repository front matter:
+
+* **SDK:** Gradio
+* **Application Entry Point:** `app.py`
+* **Python Version:** `3.11`
+
+Dependencies are installed automatically from `requirements.txt`.
+
+### Deployment Notes
+
+* **Python 3.11** is required because the standard library `audioop` module was removed in Python 3.13+, while some project dependencies still rely on it.
+
+* **TensorFlow CPU 2.15.0** includes **Keras 2.x**, which is required to load the legacy `.h5` classification model.
+
+* **NumPy** is pinned to **< 2.0** to maintain compatibility with TensorFlow 2.15.
+
+* Before pushing changes, verify that all large model files are tracked by Git LFS:
+
+  ```bash
+  git lfs ls-files
+  ```
+
+  The output should include all `.pt`, `.h5`, and any other large model files used by the project.
+
+* The project runs on **CPU-based Hugging Face Spaces**, but selecting a **GPU Space** is recommended for significantly faster video inference and object detection.
+
+* All provided models were trained and validated using an **NVIDIA GeForce RTX 4050 GPU**.
+
