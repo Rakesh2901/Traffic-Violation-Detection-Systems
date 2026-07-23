@@ -76,19 +76,56 @@ class `names`. The model then appears in both tabs automatically.
 ## Run locally
 
 ```bash
-# 1. Clone with Git LFS so the weights download as real files
+# Setup
+
+## 1. Install Git LFS (one-time setup)
+
+```bash
 git lfs install
+```
+
+## 2. Clone the repository
+
+```bash
 git clone https://github.com/Rakesh2901/Traffic-Violation-Detection-Systems.git
-cd traffic-violation
-git lfs pull            # ensure weights are real files, not LFS pointers
+cd Traffic-Violation-Detection-Systems
+```
 
-# 2. Environment + dependencies
+## 3. Download the model weights
+
+```bash
+git lfs pull
+```
+
+> This downloads the actual `.pt` model files instead of the small Git LFS pointer files.
+
+## 4. Create a virtual environment
+
+### Windows
+
+```powershell
 python -m venv .venv
-source .venv/bin/activate          # Windows: .venv\Scripts\activate
-pip install -r requirements.txt
+.venv\Scripts\activate
+```
 
-# 3. Launch
+### Linux/macOS
+
+```bash
+python3 -m venv .venv
+source .venv/bin/activate
+```
+
+## 5. Install dependencies
+
+```bash
+pip install -r requirements.txt
+```
+
+## 6. Run the application
+
+```bash
 python app.py
+```
 ```
 
 Open the printed URL (default http://localhost:7860).
