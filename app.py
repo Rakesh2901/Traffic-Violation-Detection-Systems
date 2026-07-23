@@ -670,13 +670,16 @@ with gr.Blocks(theme=THEME, css=CSS, title="Traffic Violation Detection") as dem
 
 
 if __name__ == "__main__":
-    if os.getenv("SPACE_ID"):  # Running on Hugging Face Space
-        server_name = "0.0.0.0"
-    else:                       # Local development
-        server_name = "127.0.0.1"
+    # Local development
+    is_local = os.getenv("SPACE_ID") is None and os.getenv("PORT") is None
+
     demo.launch(
-        server_name=server_name,
-        server_port=int(os.getenv("GRADIO_SERVER_PORT", "7860")),
+        server_name="127.0.0.1" if is_local else "0.0.0.0",
+        server_port=int(
+            os.getenv("PORT") or
+            os.getenv("GRADIO_SERVER_PORT") or
+            7860
+        ),
         show_error=True,
-        ssr_mode=False,  # disable experimental SSR (serves a stale UI on Spaces)
+        ssr_mode=False,
     )
