@@ -1,8 +1,4 @@
-python-3.11
 gradio==5.27.0
-# huggingface_hub 1.0 removed HfFolder; keep below it for safety with the
-# rest of the stack.
-huggingface_hub<1.0
 ultralytics>=8.3.0
 onnxruntime>=1.17.0
 torch>=2.2.0
