@@ -669,17 +669,21 @@ with gr.Blocks(theme=THEME, css=CSS, title="Traffic Violation Detection") as dem
     )
 
 
-if __name__ == "__main__":
-    # Local development
-    is_local = os.getenv("SPACE_ID") is None and os.getenv("PORT") is None
 
-    demo.launch(
-        server_name="127.0.0.1" if is_local else "0.0.0.0",
-        server_port=int(
-            os.getenv("PORT") or
-            os.getenv("GRADIO_SERVER_PORT") or
-            7860
-        ),
-        show_error=True,
-        ssr_mode=False,
-    )
+# if you want to run the uncomment this
+
+
+# if __name__ == "__main__":
+#     # Local development
+#     is_local = os.getenv("SPACE_ID") is None and os.getenv("PORT") is None
+
+#     demo.launch(
+#         server_name="127.0.0.1" if is_local else "0.0.0.0",
+#         server_port=int(
+#             os.getenv("PORT") or
+#             os.getenv("GRADIO_SERVER_PORT") or
+#             7860
+#         ),
+#         show_error=True,
+#         ssr_mode=False,
+#     )
